@@ -41,24 +41,24 @@ public class DeliveryCard {
 
     @Test
     public void shouldChangeDate() {
-        var daysForMeeting = 5;
-        var firstMeetingDate = DataGenerator.generateDate(daysForMeeting);
-        var daysForSecondMeeting = 9;
-        var secondMeetingDate = DataGenerator.generateDate(daysForSecondMeeting);
+        var daysForMeet= 5;
+        var firstMeetDate = DataGenerator.generateDate(daysForMeet);
+        var daysForSecondMeet = 9;
+        var secondMeetDate = DataGenerator.generateDate(daysForSecondMeet);
         $("[data-test-id='city'] input").val(DataGenerator.generateCity());
-        $("[data-test-id='date'] input").sendKeys(firstMeetingDate);
+        $("[data-test-id='date'] input").sendKeys(firstMeetDate);
         $("[data-test-id='name'] input").val(DataGenerator.generateName());
         $("[data-test-id='phone'] input").val(DataGenerator.generatePhone());
         $("[data-test-id='agreement']").click();
         $(".button").click();
         $("[data-test-id='success-notification']").shouldHave(text("Встреча успешно запланирована на "
-                + firstMeetingDate));
+                + firstMeetDate));
         $(".button").click();
         $("[data-test-id='replan-notification']").shouldHave(text("У вас уже запланирована встреча на другую дату." +
                 " Перепланировать?"));
         $(byText("Перепланировать")).click();
         $("[data-test-id='success-notification']").shouldHave(text("Встреча успешно запланирована на "
-                + secondMeetingDate));
+                + secondMeetDate));
     }
 }
 
